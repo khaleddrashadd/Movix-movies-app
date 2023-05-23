@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { fetchData } from './utils/api';
 import { useDispatch, useSelector } from 'react-redux';
 import { homeActions } from './store/home-slice';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import Home from './pages/home/Home';
 import Explore from './pages/explore/Explore';
 import SearchResults from './pages/searchResults/SearchResults';
@@ -33,13 +33,13 @@ function App() {
     <>
       <Header />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/" element={<Navigate to='/home' replace={true} />} />
         <Route path="/:mediaType/:id" element={<Details />} />
         <Route path="/search/:query" element={<SearchResults />} />
         <Route path="/explore/:mediaType" element={<Explore />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
-      <div style={{height:'1000px'}}></div>
       <Footer />
     </>
   );

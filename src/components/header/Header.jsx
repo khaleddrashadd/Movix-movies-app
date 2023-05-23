@@ -36,7 +36,7 @@ function Header() {
 
   return (
     <header
-      className={`${classes.header} ${mobileMenu && classes.mobileView} ${
+      className={`${classes.header} ${mobileMenu && classes['mobile-view']} ${
         classes[headerState]
       }`}
     >

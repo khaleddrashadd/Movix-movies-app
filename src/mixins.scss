@@ -35,3 +35,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+@mixin transition {
+  transition: all ease 0.4s;
+}

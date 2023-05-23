@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import classes from './HeroBanner.module.scss';
 import { useNavigate } from 'react-router-dom';
-import useFetch from '../../hooks/useFetch';
 import { useSelector } from 'react-redux';
-import Img from '../../components/lazyLoadImage/Img';
-import ContentWrapper from '../../components/contentWrapper/ContentWrapper';
+import useFetch from '../../../hooks/useFetch'
+import Img from '../../../components/lazyLoadImage/Img';
+import ContentWrapper from "../../../components/contentWrapper/ContentWrapper";
 
 const HeroBanner = () => {
   const [background, setBackground] = useState('');
@@ -18,7 +18,7 @@ const HeroBanner = () => {
       data?.results?.[Math.ceil(Math.random() * 20)]?.backdrop_path
     }`;
     setBackground(background);
-  }, [data]);
+  }, [data,url]);
 
   const searchQueryHandler = event => {
     if (event.key === 'Enter' && query.length > 0) navigate(`/search/${query}`);
@@ -32,9 +32,9 @@ const HeroBanner = () => {
   return (
     <div className={classes['hero-banner']}>
       <div className={classes['backdrop-image']}>
-        {!isloading && <Img src={background} alt='hero banner' />}
+        {!isloading && <Img src={background} alt="hero banner" />}
       </div>
-      <ContentWrapper className='center'>
+      <ContentWrapper className="center">
         <div className={classes['hero-banner__content']}>
           <span className={classes['hero-banner__title']}>welcome</span>
           <span className={classes['hero-banner__subtitle']}>
