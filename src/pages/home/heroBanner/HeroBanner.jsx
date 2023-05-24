@@ -2,37 +2,51 @@ import { useEffect, useState } from 'react';
 import classes from './HeroBanner.module.scss';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import useFetch from '../../../hooks/useFetch'
 import Img from '../../../components/lazyLoadImage/Img';
-import ContentWrapper from "../../../components/contentWrapper/ContentWrapper";
+import ContentWrapper from '../../../components/contentWrapper/ContentWrapper';
+import createFetchDataThunk from '../../../store/actions/data-actions';
+import { useDispatch } from 'react-redux';
 
 const HeroBanner = () => {
-  const [background, setBackground] = useState('');
+  // const [background, setBackground] = useState('');
   const [query, setQuery] = useState('');
   const navigate = useNavigate();
-  const { data, isloading } = useFetch('/movie/upcoming');
-  const { url } = useSelector(state => state.home);
-
+  // const { data } = useFetch('/movie/upcoming');
+  // const { url } = useSelector(state => state.home);
+  const dispatch = useDispatch();
   useEffect(() => {
-    const background = ` ${url.backdrop}${
-      data?.results?.[Math.ceil(Math.random() * 20)]?.backdrop_path
-    }`;
-    setBackground(background);
-  }, [data,url]);
+    const configThunk = createFetchDataThunk('config');
+    dispatch(configThunk('/configuration'));
+    const upcomingThunk = createFetchDataThunk('upcoming');
+    dispatch(upcomingThunk('/movie/upcoming'));
+    // setBackground(backgroundd);
+  }, [dispatch]);
+  // useEffect(() => {
+  //   const background = ` ${url.backdrop}${
+  //     data?.results?.[Math.ceil(Math.random() * 20)]?.backdrop_path
+  //   }`;
+  //   setBackground(background);
+  // }, [data, url]);
 
+  const { configUrl, isLoading, error, upcomingMovies } = useSelector(
+    state => state.trending
+  );
+  const background = ` ${configUrl.backdrop}${
+    upcomingMovies?.[Math.ceil(Math.random() * 20)]?.backdrop_path
+  }`;
+  // console.log(background);
   const searchQueryHandler = event => {
     if (event.key === 'Enter' && query.length > 0) navigate(`/search/${query}`);
   };
 
   const inputChangeHandler = event => {
-    console.log(event.target.value);
     setQuery(event.target.value);
   };
 
   return (
     <div className={classes['hero-banner']}>
       <div className={classes['backdrop-image']}>
-        {!isloading && <Img src={background} alt="hero banner" />}
+        {!isLoading && !error && <Img src={background} alt="hero banner" />}
       </div>
       <ContentWrapper className="center">
         <div className={classes['hero-banner__content']}>

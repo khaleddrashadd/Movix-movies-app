@@ -3,7 +3,7 @@ import { fetchData } from '../utils/api';
 
 const useFetch = url => {
   const [data, setData] = useState(null);
-  const [isloading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -20,7 +20,7 @@ const useFetch = url => {
       });
   }, [url]);
 
-  return { data, isloading, error };
+  return { data, isLoading, error };
 };
 
 export default useFetch;

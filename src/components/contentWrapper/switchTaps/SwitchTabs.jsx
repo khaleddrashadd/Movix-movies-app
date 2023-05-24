@@ -1,6 +1,6 @@
+import { switchTabAction } from "../../../store/slices/switch-tab-slice";
 import classes from './SwitchTaps.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { switchTabAction } from '../../../store/switch-tab-slice';
 
 const SwitchTabs = (props) => {
   const switchTab = useSelector(state => state.switchTab);

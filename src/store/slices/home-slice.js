@@ -6,7 +6,7 @@ const initialState = {
 };
 
 const homeSlice = createSlice({
-  name: 'home slice',
+  name: 'home',
   initialState,
   reducers: {
     getApiConfig: (state, action) => {
