@@ -1,4 +1,4 @@
-import { createSlice, isAnyOf } from '@reduxjs/toolkit';
+import { createSlice, isAnyOf, isPending } from '@reduxjs/toolkit';
 
 const initialState = {
   trendingMovies: null,
@@ -12,8 +12,8 @@ const initialState = {
   },
 };
 
-const trendingSlice = createSlice({
-  name: 'trending',
+const dataSlice = createSlice({
+  name: 'data',
   initialState,
   extraReducers: builder => {
     builder.addMatcher(
@@ -27,7 +27,7 @@ const trendingSlice = createSlice({
       }
     );
     builder.addMatcher(
-      action => action.type === 'trending/fetchData/fulfilled',
+      (action) => action.type === 'trending/fetchData/fulfilled',
       (state, action) => {
         state.isLoading = false;
         state.trendingMovies = action.payload.results;
@@ -60,8 +60,9 @@ const trendingSlice = createSlice({
         state.error = action.error.message;
       }
     );
+    builder.addMatcher(isPending())
   },
 });
 
-export default trendingSlice;
-export const trendingAction = trendingSlice.actions;
+export default dataSlice;
+// export const dataAction = dataSlice.actions;

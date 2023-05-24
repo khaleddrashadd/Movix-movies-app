@@ -1,15 +1,14 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { fetchData } from '../../utils/api';
 
-const createFetchDataThunk = (name) => {
-  return createAsyncThunk(`${name}/fetchData`, async (url) => {
+export const fetchConfigurationData = createAsyncThunk(
+  'configuration/fetchData',
+  async url => {
     try {
       const response = await fetchData(url);
       return response;
     } catch (err) {
       return err;
     }
-  });
-};
-
-export default createFetchDataThunk;
+  }
+);
