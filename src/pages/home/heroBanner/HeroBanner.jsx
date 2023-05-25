@@ -3,7 +3,7 @@ import classes from './HeroBanner.module.scss';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Img from '../../../components/lazyLoadImage/Img';
-import ContentWrapper from '../../../components/contentWrapper/ContentWrapper';
+import ContentWrapper from '../../../components/UI/contentWrapper/ContentWrapper';
 import createFetchDataThunk from '../../../store/actions/data-actions';
 import { useDispatch } from 'react-redux';
 
@@ -19,7 +19,7 @@ const HeroBanner = () => {
   }, [dispatch]);
 
   const { configUrl, isLoading, error, upcomingMovies } = useSelector(
-    state => state.trending
+    state => state.data
   );
   const background = ` ${configUrl.backdrop}${
     upcomingMovies?.[Math.ceil(Math.random() * 20)]?.backdrop_path

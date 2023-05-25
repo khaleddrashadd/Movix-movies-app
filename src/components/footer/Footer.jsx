@@ -1,5 +1,5 @@
 import classes from './Footer.module.scss';
-import ContentWrapper from '../contentWrapper/ContentWrapper';
+import ContentWrapper from '../UI/contentWrapper/ContentWrapper';
 import {
   FaFacebookF,
   FaInstagram,

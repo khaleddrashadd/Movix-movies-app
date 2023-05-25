@@ -12,7 +12,7 @@ const CircleRating = ({ rating }) => {
       <AnimatedProgressProvider
         valueStart={0}
         valueEnd={rating}
-        duration={1.6}
+        duration={2.5}
         easingFunction={easeCircleOut}
       >
         {rating => (

@@ -3,47 +3,45 @@ import {
   BsFillArrowRightCircleFill,
   BsFillArrowLeftCircleFill,
 } from 'react-icons/bs';
-import ContentWrapper from '../contentWrapper/ContentWrapper';
+import ContentWrapper from '../UI/contentWrapper/ContentWrapper';
 import CarouselItems from './CarouselItems';
 import { useSelector } from 'react-redux';
-const Carousel = () => {
-  const { isLoading } = useSelector(state => state.trending);
-
-  const loadingSkeleton = () => {
-    return (
-      <div className={classes['skeleton-item']}>
-        <div className={`${classes['skeleton-item__poster']} skeleton`}></div>
-        <div className={classes['skeleton-item__text']}>
-          <div className={`${classes['skeleton-item__title']} skeleton`}></div>
-          <div className={`${classes['skeleton-item__date']} skeleton`}></div>
-        </div>
-      </div>
-    );
+import LoadingSkeleton from '../loadingSkeleton/LoadingSkeleton';
+import { useRef } from 'react';
+const Carousel = ({ data, endPoint }) => {
+  const { isLoading, error } = useSelector(state => state.data);
+  const scrollRef = useRef();
+  const scrollHandler = direction => {
+    scrollRef.current.scroll(direction);
   };
-
   return (
     <div className={classes.carousel}>
       <ContentWrapper className="carousel">
         <BsFillArrowLeftCircleFill
           className={`${classes.carouselLeftNav} ${classes.arrow}`}
+          onClick={scrollHandler.bind(null, 'left')}
         />
         <BsFillArrowRightCircleFill
           className={`${classes.carouselRighttNav} ${classes.arrow}`}
+          onClick={scrollHandler.bind(null, 'right')}
         />
-        {!isLoading ? (
-          <CarouselItems />
+        {!isLoading && !error ? (
+          <CarouselItems
+            ref={scrollRef}
+            data={data}
+            endPoint={endPoint}
+          />
         ) : (
           <div className={classes['loading-skeleton']}>
-            {loadingSkeleton()}
-            {loadingSkeleton()}
-            {loadingSkeleton()}
-            {loadingSkeleton()}
-            {loadingSkeleton()}
+            <LoadingSkeleton />
+            <LoadingSkeleton />
+            <LoadingSkeleton />
+            <LoadingSkeleton />
+            <LoadingSkeleton />
           </div>
         )}
       </ContentWrapper>
     </div>
   );
 };
-
 export default Carousel;
