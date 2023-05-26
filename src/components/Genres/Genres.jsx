@@ -3,7 +3,7 @@ import classes from './Genres.module.scss';
 import { useMemo } from 'react';
 
 const Genres = props => {
-  const { tvGenres, movieGenres } = useSelector(state => state.data);
+  const { tvGenres, movieGenres } = useSelector(({ genres }) => genres);
   const allGenres = useMemo(() => {
     return { ...tvGenres, ...movieGenres };
   }, [tvGenres, movieGenres]);

@@ -9,8 +9,7 @@ import Genres from '../Genres/Genres';
 import React, { useRef, useImperativeHandle } from 'react';
 import { useNavigate } from 'react-router';
 
-const CarouselItems = React.forwardRef((props, ref) => {
-  const { configUrl, trendingMovies } = useSelector(state => state.data);
+const CarouselItems = React.forwardRef((props, ref) => {  
   const scrollRef = useRef();
   const navigate = useNavigate();
 
@@ -33,7 +32,7 @@ const CarouselItems = React.forwardRef((props, ref) => {
       {props.data?.map(item => {
         const rating = item.vote_average.toFixed(1);
         const posterUrl = item?.poster_path
-          ? `${configUrl.poster}${item.poster_path}`
+          ? `${props.configUrl.poster}${item.poster_path}`
           : PosterFallback;
 
         return (
@@ -41,7 +40,7 @@ const CarouselItems = React.forwardRef((props, ref) => {
             key={item.id}
             className={classes.carousel__item}
             onClick={() => {
-              navigate(`/${item.media_type||props.endPoint}/${item.id}`);
+              navigate(`/${item.media_type || props.endPoint}/${item.id}`);
             }}
           >
             <div className={classes['carousel__poster-block']}>

@@ -1,6 +1,10 @@
 .genres {
   z-index: 2;
   display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  flex-shrink: 1;
+  width: min-content;
   gap: 5px;
   &__item {
     background-color: var(--pink);

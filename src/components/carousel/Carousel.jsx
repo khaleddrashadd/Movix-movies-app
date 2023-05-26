@@ -9,7 +9,7 @@ import { useSelector } from 'react-redux';
 import LoadingSkeleton from '../loadingSkeleton/LoadingSkeleton';
 import { useRef } from 'react';
 const Carousel = ({ data, endPoint }) => {
-  const { isLoading, error } = useSelector(state => state.data);
+  const { configUrl,isLoadingUrl } = useSelector(({ configUrl }) => configUrl);
   const scrollRef = useRef();
   const scrollHandler = direction => {
     scrollRef.current.scroll(direction);
@@ -25,13 +25,15 @@ const Carousel = ({ data, endPoint }) => {
           className={`${classes.carouselRighttNav} ${classes.arrow}`}
           onClick={scrollHandler.bind(null, 'right')}
         />
-        {!isLoading && !error ? (
+        {!isLoadingUrl && (
           <CarouselItems
             ref={scrollRef}
             data={data}
             endPoint={endPoint}
+            configUrl={configUrl}
           />
-        ) : (
+        )}{' '}
+        {isLoadingUrl && (
           <div className={classes['loading-skeleton']}>
             <LoadingSkeleton />
             <LoadingSkeleton />

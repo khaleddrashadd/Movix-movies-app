@@ -1,30 +1,30 @@
-import { useEffect } from 'react';
-import Carousel from '../../../components/carousel/Carousel';
-import ContentWrapper from '../../../components/UI/contentWrapper/ContentWrapper';
-import SwitchTabs from '../../../components/UI/switchTabs/SwitchTabs';
-import classes from './Trending.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
+import CarouselSection from '../../../components/UI/carouselSections/CarouselSection';
+import { useEffect, useState } from 'react';
 import createFetchDataThunk from '../../../store/actions/data-actions';
 
-const trendingOptions =  ['Day', 'Week'];
-
 const Trending = () => {
+  const [trendingTab, setTrendingTab] = useState('day');
   const dispatch = useDispatch();
-  const { selectedTrendingTab } = useSelector(state => state.switchTab);
 
-  // useEffect(() => {
-  //   const trendingThunk = createFetchDataThunk('trending');
-  //   dispatch(trendingThunk(`/trending/all/${selectedTrendingTab}`));
-  // }, [selectedTrendingTab, dispatch]);
+  const selectedTabHandler = tab => {
+    setTrendingTab(tab === 'Day' ? 'day' : 'week');
+  };
+  useEffect(() => {
+    const trendingThunk = createFetchDataThunk('trending');
+    dispatch(trendingThunk(`/trending/all/${trendingTab}`));
+  }, [trendingTab, dispatch]);
+  const trendingMovies = useSelector(({ trending }) => trending.trendingMovies);
 
   return (
-    <div className={classes['carousel-section']}>
-      <ContentWrapper className="trending">
-        <span className={classes['carousel-section__title']}>Trending</span>
-        <SwitchTabs options={trendingOptions} />
-      </ContentWrapper>
-      <Carousel />
-    </div>
+    trendingMovies && (
+      <CarouselSection
+        title="Trending"
+        options={['Day', 'Week']}
+        data={trendingMovies}
+        onSelectTab={selectedTabHandler}
+      />
+    )
   );
 };
 

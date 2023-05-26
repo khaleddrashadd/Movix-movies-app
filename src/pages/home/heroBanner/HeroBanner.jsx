@@ -11,6 +11,7 @@ const HeroBanner = () => {
   const [query, setQuery] = useState('');
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
   useEffect(() => {
     const configThunk = createFetchDataThunk('config');
     dispatch(configThunk('/configuration'));
@@ -18,8 +19,9 @@ const HeroBanner = () => {
     dispatch(upcomingThunk('/movie/upcoming'));
   }, [dispatch]);
 
-  const { configUrl, isLoading, error, upcomingMovies } = useSelector(
-    state => state.data
+  const { configUrl, isLoadingUrl } = useSelector(({ configUrl }) => configUrl);
+  const { upcomingMovies, isLoadingUpcoming } = useSelector(
+    ({ upcomingMovies }) => upcomingMovies
   );
   const background = ` ${configUrl.backdrop}${
     upcomingMovies?.[Math.ceil(Math.random() * 20)]?.backdrop_path
@@ -32,12 +34,14 @@ const HeroBanner = () => {
     setQuery(event.target.value);
   };
 
+  const isLoading = isLoadingUrl && isLoadingUpcoming;
+
   return (
     <div className={classes['hero-banner']}>
       <div className={classes['backdrop-image']}>
-        {!isLoading && !error && <Img src={background} alt="hero banner" />}
+        {!isLoading && <Img src={background} alt="hero banner" />}
       </div>
-      <ContentWrapper className="center">
+      <ContentWrapper className="hero-banner__wrapper">
         <div className={classes['hero-banner__content']}>
           <span className={classes['hero-banner__title']}>welcome</span>
           <span className={classes['hero-banner__subtitle']}>
