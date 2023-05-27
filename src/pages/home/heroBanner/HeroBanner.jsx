@@ -13,8 +13,6 @@ const HeroBanner = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const configThunk = createFetchDataThunk('config');
-    dispatch(configThunk('/configuration'));
     const upcomingThunk = createFetchDataThunk('upcoming');
     dispatch(upcomingThunk('/movie/upcoming'));
   }, [dispatch]);

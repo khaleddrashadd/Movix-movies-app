@@ -8,7 +8,7 @@ const initialState = {
 };
 
 const SwitchTabSlice = createSlice({
-  name: 'switch tab slice',
+  name: 'switch/tab',
   initialState,
   reducers: {
     trendingTab: (state, action) => {

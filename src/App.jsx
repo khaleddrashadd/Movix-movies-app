@@ -19,6 +19,12 @@ function App() {
       dispatch(genresThunk(`/genre/${url}/list`));
     });
   }, [dispatch]);
+  
+  useEffect(() => {
+      const configThunk = createFetchDataThunk('config');
+      dispatch(configThunk('/configuration'));
+  }, [dispatch]);
+
   return (
     <>
       <Header />

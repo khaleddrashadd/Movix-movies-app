@@ -15,7 +15,6 @@ const TopRated = () => {
     dispatch(topRatedThunk(`/${topRatedTab}/top_rated`));
   }, [topRatedTab, dispatch]);
   const { topRatedMovies } = useSelector(({ topRated }) => topRated);
-  console.log(topRatedMovies);
   return (
     <CarouselSection
       title="Top Rated"

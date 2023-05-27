@@ -7,7 +7,7 @@ const initialState = {
 };
 
 const popularSlice = createSlice({
-  name: 'data',
+  name: 'popular',
   initialState,
   extraReducers: builder => {
     builder.addMatcher(

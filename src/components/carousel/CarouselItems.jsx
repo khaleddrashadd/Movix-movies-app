@@ -3,7 +3,6 @@ import dayjs from 'dayjs';
 import classes from './CarouselItems.module.scss';
 import Img from '../lazyLoadImage/Img';
 import PosterFallback from '../../assets/no-poster.png';
-import { useSelector } from 'react-redux';
 import CircleRating from '../UI/circleRating/CitcleRating';
 import Genres from '../Genres/Genres';
 import React, { useRef, useImperativeHandle } from 'react';
@@ -45,8 +44,11 @@ const CarouselItems = React.forwardRef((props, ref) => {
           >
             <div className={classes['carousel__poster-block']}>
               <Img src={posterUrl} alt="poster" />
-              <CircleRating rating={rating} />
-              <Genres genresData={item.genre_ids.slice(0, 2)} />
+              <CircleRating rating={rating} styling={'circle-rating__home'} />
+              <Genres
+                genresData={item.genre_ids.slice(0, 2)}
+                className="genres--home"
+              />
             </div>
             <div className={classes.text}>
               <span className={classes.text__title}>

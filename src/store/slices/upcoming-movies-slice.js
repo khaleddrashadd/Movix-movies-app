@@ -7,7 +7,7 @@ const initialState = {
 };
 
 const upcomingMoviesSlice = createSlice({
-  name: 'upcomingMovies',
+  name: 'upcoming/movies',
   initialState,
   extraReducers: builder => {
     builder.addMatcher(

@@ -11,7 +11,7 @@ const initialState = {
 };
 
 const configUrlSlice = createSlice({
-  name: 'data',
+  name: 'config',
   initialState,
   extraReducers: builder => {
     builder.addMatcher(

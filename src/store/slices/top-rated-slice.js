@@ -7,7 +7,7 @@ const initialState = {
 };
 
 const topRatedSlice = createSlice({
-  name: 'topRated',
+  name: 'top/rated',
   initialState,
   extraReducers: builder => {
     builder.addMatcher(

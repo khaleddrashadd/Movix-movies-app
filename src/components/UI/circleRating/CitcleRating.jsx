@@ -2,13 +2,12 @@ import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { easeCircleOut } from 'd3-ease';
 
-
 import './CitcleRating.scss';
 import AnimatedProgressProvider from './AnimatedProgressProvider';
 
-const CircleRating = ({ rating }) => {
+const CircleRating = ({ rating, styling }) => {
   return (
-    <div className="circleRating">
+    <div className={styling}>
       <AnimatedProgressProvider
         valueStart={0}
         valueEnd={rating}

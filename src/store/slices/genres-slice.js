@@ -8,7 +8,7 @@ const initialState = {
 };
 
 const genresSlice = createSlice({
-  name: 'data',
+  name: 'genres',
   initialState,
   extraReducers: builder => {
     builder.addMatcher(

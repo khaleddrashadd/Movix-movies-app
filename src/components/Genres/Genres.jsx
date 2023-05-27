@@ -8,7 +8,7 @@ const Genres = props => {
     return { ...tvGenres, ...movieGenres };
   }, [tvGenres, movieGenres]);
   return (
-    <div className={classes.genres}>
+    <div className={classes[props.className]}>
       {props.genresData?.map(genre => {
         if (!allGenres[genre]?.name) return;
         return (
