@@ -40,37 +40,37 @@ function Header() {
         classes[headerState]
       }`}
     >
-      <Link to="/">
-        <img src={logo} alt="logo" className={classes.logo} />
-      </Link>
+        <Link to="/">
+          <img src={logo} alt="logo" className={classes.logo} />
+        </Link>
 
-      <ul className={classes.menu}>
-        <li className={classes.menu__item}>
-          <NavLink
-            to="/explore/movie"
-            className={({ isActive }) => (isActive ? classes.active : '')}
-            onClick={menuHandler}
-          >
-            Movies
-          </NavLink>
-        </li>
-        <li className={classes.menu__item}>
-          <NavLink
-            to="/explore/tv"
-            className={({ isActive }) => (isActive ? classes.active : '')}
-            onClick={menuHandler}
-          >
-            TV Shows
-          </NavLink>
-        </li>
-      </ul>
-      <div className={classes.close}>
-        {mobileMenu ? (
-          <VscChromeClose onClick={menuHandler} />
-        ) : (
-          <SlMenu onClick={openMobileMenu} />
-        )}
-      </div>
+        <ul className={classes.menu}>
+          <li className={classes.menu__item}>
+            <NavLink
+              to="/explore/movie"
+              className={({ isActive }) => (isActive ? classes.active : '')}
+              onClick={menuHandler}
+            >
+              Movies
+            </NavLink>
+          </li>
+          <li className={classes.menu__item}>
+            <NavLink
+              to="/explore/tv"
+              className={({ isActive }) => (isActive ? classes.active : '')}
+              onClick={menuHandler}
+            >
+              TV Shows
+            </NavLink>
+          </li>
+        </ul>
+        <div className={classes.close}>
+          {mobileMenu ? (
+            <VscChromeClose onClick={menuHandler} />
+          ) : (
+            <SlMenu onClick={openMobileMenu} />
+          )}
+        </div>
     </header>
   );
 }
