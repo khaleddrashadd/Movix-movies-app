@@ -8,13 +8,14 @@ import CarouselItems from './CarouselItems';
 import { useSelector } from 'react-redux';
 import LoadingSkeleton from '../loadingSkeleton/LoadingSkeleton';
 import { useRef } from 'react';
+
 const Carousel = ({ data, endPoint,title }) => {
   const { configUrl,isLoadingUrl } = useSelector(({ configUrl }) => configUrl);
   const scrollRef = useRef();
   const scrollHandler = direction => {
     scrollRef.current.scroll(direction);
   };
-  console.log(data);
+
   return (
     <div className={classes.carousel}>
       <ContentWrapper className="carousel">

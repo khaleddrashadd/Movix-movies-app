@@ -4,7 +4,7 @@ import ContentWrapper from '../../../components/UI/contentWrapper/ContentWrapper
 const DetailsBannerSkeleton = () => {
   const items = [];
   for (let i = 0; i < 7; i++) {
-    items.push(<div className={`${classes.row} skeleton`}></div>);
+    items.push(<div key={i} className={`${classes.row} skeleton`}></div>);
   }
   return (
     <div className={classes['details-banner-skeleton']}>

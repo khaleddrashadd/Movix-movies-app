@@ -44,7 +44,7 @@ const CarouselItems = React.forwardRef((props, ref) => {
           >
             <div className={classes['carousel__poster-block']}>
               <Img src={posterUrl} alt="poster" />
-              <CircleRating rating={rating} styling={'circle-rating__home'} />
+              <CircleRating rating={rating} styling={'circle-rating--home'} />
               <Genres
                 genresData={item.genre_ids.slice(0, 2)}
                 className="genres--home"

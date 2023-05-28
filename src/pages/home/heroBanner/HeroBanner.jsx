@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import classes from './HeroBanner.module.scss';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -8,7 +8,7 @@ import createFetchDataThunk from '../../../store/actions/data-actions';
 import { useDispatch } from 'react-redux';
 
 const HeroBanner = () => {
-  const [query, setQuery] = useState('');
+  const inputRef = useRef();
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -24,12 +24,11 @@ const HeroBanner = () => {
   const background = ` ${configUrl.backdrop}${
     upcomingMovies?.[Math.ceil(Math.random() * 20)]?.backdrop_path
   }`;
-  const searchQueryHandler = event => {
-    if (event.key === 'Enter' && query.length > 0) navigate(`/search/${query}`);
-  };
-
-  const inputChangeHandler = event => {
-    setQuery(event.target.value);
+  const submitFormHandler = event => {
+    event.preventDefault();
+    const query = inputRef.current.value;
+    if (query.trim('') === '') return;
+    navigate(`/search/${query}`);
   };
 
   const isLoading = isLoadingUrl && isLoadingUpcoming;
@@ -45,18 +44,20 @@ const HeroBanner = () => {
           <span className={classes['hero-banner__subtitle']}>
             Millions of movies, Tv shows and people to discover. Explore Now.
           </span>
-          <div className={classes['hero-banner__search']}>
+          <form
+            className={classes['hero-banner__search']}
+            onSubmit={submitFormHandler}
+          >
             <input
               className={classes['hero-banner__search-input']}
               type="text"
               placeholder="Search for a movie or TV show...."
-              onKeyUp={searchQueryHandler}
-              onChange={inputChangeHandler}
+              ref={inputRef}
             />
             <button className={classes['hero-banner__search-btn']}>
               Search
             </button>
-          </div>
+          </form>
         </div>
       </ContentWrapper>
     </div>

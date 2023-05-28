@@ -4,7 +4,7 @@ const CastSkeleton = () => {
   const skeletonItem = [];
   for (let i = 0; i < 6; i++) {
     skeletonItem.push(
-      <div className={classes['cast-skeleton__item']}>
+      <div key={i} className={classes['cast-skeleton__item']}>
         <div className={`${classes['cast-skeleton__circle']} skeleton`}></div>
         <div
           className={`${classes['cast-skeleton__item--first']} skeleton`}

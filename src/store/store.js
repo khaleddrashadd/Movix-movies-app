@@ -11,6 +11,7 @@ import creditsSlice from "./slices/credits-slice";
 import videosSlice from "./slices/videos-slice";
 import similarSlice from "./slices/similar-slice";
 import recommendationSlice from "./slices/recommendation-slice";
+import searchResultsSlice from "./slices/search-results-slice";
 
 const store = configureStore({
   reducer: {
@@ -26,6 +27,7 @@ const store = configureStore({
     videos: videosSlice.reducer,
     similar: similarSlice.reducer,
     recommendation: recommendationSlice.reducer,
+    searchResults: searchResultsSlice.reducer,
   },
 });
 
