@@ -28,7 +28,7 @@ const HeroBanner = () => {
     event.preventDefault();
     const query = inputRef.current.value;
     if (query.trim('') === '') return;
-    navigate(`/search/${query}`);
+    navigate(`search/${query}`);
   };
 
   const isLoading = isLoadingUrl && isLoadingUpcoming;
