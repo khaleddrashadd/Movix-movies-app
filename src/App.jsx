@@ -29,7 +29,7 @@ function App() {
     <>
       <Header />
       <Routes>
-        <Route path="/home" element={<Home />} />
+        <Route path="/" element={<Home />} />
         {/* <Route path="/" element={<Navigate to="/home" replace={true} />} /> */}
         <Route path="/:mediaType/:id" element={<Details />} />
         <Route path="/search/:query" element={<SearchResults />} />
