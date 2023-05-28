@@ -20,9 +20,7 @@ const searchResultsSlice = createSlice({
     builder.addMatcher(
       action => action.type === 'search/fetchData/fulfilled',
       (state, action) => {
-        console.log(action.payload);
         state.isLoadingSearch = false;
-        // state.searchResults = action.payload;
         state.searchResults = {
           page: action.payload.page,
           total_pages: action.payload.total_pages,

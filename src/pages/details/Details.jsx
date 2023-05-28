@@ -19,7 +19,6 @@ const Details = () => {
   }, [dispatch,id,mediaType]);
   const { credits, isLoadingCredits } = useSelector(({ credits }) => credits);
   const { videos,isLoadingVideos } = useSelector(({ videos }) => videos);
-console.log(videos);
   return (
     <>
       <DetailsBanner crew={credits?.crew} video={videos?.results?.[0]} />

@@ -12,6 +12,7 @@ import videosSlice from "./slices/videos-slice";
 import similarSlice from "./slices/similar-slice";
 import recommendationSlice from "./slices/recommendation-slice";
 import searchResultsSlice from "./slices/search-results-slice";
+import discoverSlice from "./slices/discover-slice";
 
 const store = configureStore({
   reducer: {
@@ -28,6 +29,7 @@ const store = configureStore({
     similar: similarSlice.reducer,
     recommendation: recommendationSlice.reducer,
     searchResults: searchResultsSlice.reducer,
+    discover: discoverSlice.reducer,
   },
 });
 

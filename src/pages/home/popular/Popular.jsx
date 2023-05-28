@@ -8,7 +8,6 @@ const Popular = () => {
 
   const dispatch = useDispatch();
   const selectedTabHandler = tab => {
-    console.log(tab);
     setPopularTab(tab === 'Movies' ? 'movie' : 'tv');
   };
   useEffect(() => {

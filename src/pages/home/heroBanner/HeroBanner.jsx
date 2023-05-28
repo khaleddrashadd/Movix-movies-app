@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import classes from './HeroBanner.module.scss';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -45,6 +45,7 @@ const HeroBanner = () => {
             Millions of movies, Tv shows and people to discover. Explore Now.
           </span>
           <form
+            action=""
             className={classes['hero-banner__search']}
             onSubmit={submitFormHandler}
           >

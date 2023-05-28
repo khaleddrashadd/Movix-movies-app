@@ -12,7 +12,6 @@ const Recommendation = ({ mediaType, id }) => {
   const { recommendation, isLoadingRecommendation } = useSelector(
     ({ recommendation }) => recommendation
   );
-console.log(recommendation?.results);
   return (
     <Carousel
       title="Recommendations"

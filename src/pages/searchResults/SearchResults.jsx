@@ -10,7 +10,6 @@ import MovieCard from '../../components/movieCard/MovieCard';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 function SearchResults() {
-  // console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
 
   const [pageNum, setPageNum] = useState(1);
   const params = useParams();
@@ -33,7 +32,6 @@ function SearchResults() {
   const nextPageHandler = () => {
     setPageNum(prevState => prevState + 1);
   };
-  console.log(pageNum);
 
   return (
     <div className={classes['search-results']}>

@@ -64,7 +64,7 @@ function Header() {
           </NavLink>
         </li>
       </ul>
-      <div className={classes.mobileMenuItems}>
+      <div className={classes.close}>
         {mobileMenu ? (
           <VscChromeClose onClick={menuHandler} />
         ) : (

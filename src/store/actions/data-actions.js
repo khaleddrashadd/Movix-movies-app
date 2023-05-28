@@ -1,12 +1,10 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { fetchData } from '../../utils/api';
 
-const createFetchDataThunk = name => {
-  return createAsyncThunk(`${name}/fetchData`, async url => {
+const createFetchDataThunk = (name,params) => {
+  return createAsyncThunk(`${name}/fetchData`, async (url) => {
     try {
-      // console.log(url);
-      const response = await fetchData(url);
-      // if (url === 'movie/topRated') console.log(response);
+      const response = await fetchData(url, params);
       return response;
     } catch (err) {
       console.log(err);

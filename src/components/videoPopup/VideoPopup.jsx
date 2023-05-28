@@ -6,7 +6,6 @@ const VideoPopup = ({ show, setShow, videoId, setVideoId }) => {
     setShow(false);
     setVideoId(null);
   };
-console.log(videoId);
 
   return (
     <div className={`${classes['video-popup']} ${show ? classes.visible : ''}`}>

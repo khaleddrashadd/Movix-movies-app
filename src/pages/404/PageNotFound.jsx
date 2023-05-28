@@ -1,7 +1,7 @@
-import './PageNotFound.module.scss';
+import classes from './PageNotFound.module.scss';
 
 const PageNotFound = () => {
-  return <div>PageNotFound</div>;
+  return <div className={classes['not-found']}>PageNotFound :(</div>;
 };
 
 export default PageNotFound;
