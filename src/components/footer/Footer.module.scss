@@ -1,5 +1,7 @@
 @import '../../mixins.scss';
 .footer {
+  position: fixed;
+  bottom: 0;
   background-color: var(--black3);
   padding: 50px 1rem;
   color: white;
