@@ -8,6 +8,8 @@
   align-items: center;
 
   &__content {
+    padding: 0 1rem;
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -32,10 +34,14 @@
     }
   }
 
+  // &__search {
+  //   width: 100%;
+  //   display: flex;
+  //   align-items: center;
+  // }
+
   &__search {
-    width: 100%;
-    display: flex;
-    align-items: center;
+    padding: 0 1rem;
   }
 
   &__search-input {
@@ -47,17 +53,16 @@
     font-size: 1rem;
     padding: 0 1rem;
     caret-color: var(--black-lighter);
-    
-    @include md{
+
+    @include md {
       width: calc(100% - 9.37rem);
       height: 3.75rem;
       font-size: 1.25rem;
       padding: 0 1.8rem;
-
     }
     &::placeholder {
       padding-left: 1rem;
-      font-size: .87rem;
+      font-size: 0.87rem;
       letter-spacing: 1.2px;
       color: rgba(0, 0, 0, 0.301);
     }
@@ -73,7 +78,7 @@
     color: white;
     outline: none;
     cursor: pointer;
-    @include md{
+    @include md {
       height: 3.75rem;
     }
   }

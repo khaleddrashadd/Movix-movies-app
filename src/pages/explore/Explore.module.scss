@@ -1,5 +1,6 @@
 @import '../../mixins.scss';
 .page {
+  padding: 0 1rem;
   min-height: 700px;
   padding-top: 100px;
   &__header {
@@ -31,16 +32,14 @@
   }
 
   &__filters {
-  display: flex;
-  gap: 10px;
-  flex-direction: column;
-  @include md {
-    flex-direction: row;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    @include md {
+      flex-direction: row;
+    }
   }
 }
-
-}
-
 
 .not-found {
   font-size: 24px;
