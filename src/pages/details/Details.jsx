@@ -1,24 +1,31 @@
-import { useParams } from 'react-router-dom';
+import { matchPath, useLocation, useMatch, useParams } from 'react-router-dom';
 import DetailsBanner from './detailsBanner/DetailsBanner';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import createFetchDataThunk from '../../store/actions/data-actions';
-import Cast from "./cast/Cast";
+import Cast from './cast/Cast';
 import VideosSection from './videosSection/VideosSection';
-import Similar from './carousels/Similar'
+import Similar from './carousels/Similar';
 import Recommendation from './carousels/Recommendation';
-
 const Details = () => {
+  const { pathname } = useLocation();
   const dispatch = useDispatch();
   const { mediaType, id } = useParams();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
   useEffect(() => {
     const videosThunk = createFetchDataThunk('videos');
     dispatch(videosThunk(`/${mediaType}/${id}/videos`));
     const creditsThunk = createFetchDataThunk('credits');
     dispatch(creditsThunk(`/${mediaType}/${id}/credits`));
-  }, [dispatch,id,mediaType]);
+  }, [dispatch, id, mediaType]);
+
   const { credits, isLoadingCredits } = useSelector(({ credits }) => credits);
-  const { videos,isLoadingVideos } = useSelector(({ videos }) => videos);
+  const { videos, isLoadingVideos } = useSelector(({ videos }) => videos);
+
   return (
     <>
       <DetailsBanner crew={credits?.crew} video={videos?.results?.[0]} />

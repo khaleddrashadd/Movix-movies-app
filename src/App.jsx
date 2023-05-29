@@ -1,4 +1,5 @@
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Route, Routes } from 'react-router-dom';
 import Home from './pages/home/Home';
 import Explore from './pages/explore/Explore';
 import SearchResults from './pages/searchResults/SearchResults';
@@ -8,8 +9,6 @@ import Footer from './components/footer/Footer';
 import Header from './components/header/Header';
 import { useDispatch } from 'react-redux';
 import createFetchDataThunk from './store/actions/data-actions';
-import { useEffect } from 'react';
-
 const endPoints = ['tv', 'movie'];
 function App() {
   const dispatch = useDispatch();
