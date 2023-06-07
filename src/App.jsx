@@ -9,6 +9,7 @@ import Footer from './components/footer/Footer';
 import Header from './components/header/Header';
 import { useDispatch } from 'react-redux';
 import createFetchDataThunk from './store/actions/data-actions';
+import ScrollToTop from './components/ScrollToTop';
 const endPoints = ['tv', 'movie'];
 function App() {
   const dispatch = useDispatch();
@@ -26,6 +27,7 @@ function App() {
 
   return (
     <>
+      <ScrollToTop />
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />

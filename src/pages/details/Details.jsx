@@ -8,13 +8,8 @@ import VideosSection from './videosSection/VideosSection';
 import Similar from './carousels/Similar';
 import Recommendation from './carousels/Recommendation';
 const Details = () => {
-  const { pathname } = useLocation();
   const dispatch = useDispatch();
   const { mediaType, id } = useParams();
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
 
   useEffect(() => {
     const videosThunk = createFetchDataThunk('videos');
