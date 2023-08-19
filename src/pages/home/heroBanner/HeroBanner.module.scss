@@ -34,29 +34,27 @@
     }
   }
 
-  // &__search {
-  //   width: 100%;
-  //   display: flex;
-  //   align-items: center;
-  // }
 
   &__search {
     padding: 0 1rem;
+    width: 20rem;
+    height: 3.75rem;
+    position: relative;
   }
 
   &__search-input {
-    width: calc(100% - 6.25rem);
-    height: 3.13rem;
+    width: 16rem;
+    height: 100%;
     border: none;
     border-radius: 100px 0 0 100px;
     outline: none;
     font-size: 1rem;
     padding: 0 1rem;
     caret-color: var(--black-lighter);
+    position: absolute;
+    left: 0;
 
     @include md {
-      width: calc(100% - 9.37rem);
-      height: 3.75rem;
       font-size: 1.25rem;
       padding: 0 1.8rem;
     }
@@ -70,7 +68,7 @@
 
   &__search-btn {
     flex: 1;
-    height: 3.13rem;
+    height: 100%;
     padding: 1rem;
     border: none;
     border-radius: 0 100px 100px 0;
@@ -78,8 +76,9 @@
     color: white;
     outline: none;
     cursor: pointer;
+    position: absolute;
+    right: 0;
     @include md {
-      height: 3.75rem;
     }
   }
 }
